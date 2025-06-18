@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encurtador de URL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      /* Animação para o modal */
+      .modal-enter {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+      }
+      .modal-enter-active {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        transition: all 300ms ease-out;
+      }
+      .modal-leave-active {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+        transition: all 200ms ease-in;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex items-center justify-center min-h-screen transition-colors duration-300"
+  >
+    <div class="w-full max-w-2xl mx-auto p-4 md:p-6">
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 md:p-8">
+        <header class="text-center mb-8">
+          <h1
+            class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white"
+          >
+            Encurtador de URL
+          </h1>
+          <p class="text-gray-500 dark:text-gray-400 mt-2">
+            Cole sua URL longa abaixo para criar um link curto.
+          </p>
+        </header>
+
+        <!-- Formulário de Encurtamento -->
+        <form
+          id="shortenForm"
+          class="flex flex-col sm:flex-row items-center gap-4 mb-6"
+        >
+          <div class="relative flex-grow w-full">
+            <svg
+              class="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <input
+              type="url"
+              id="longUrlInput"
+              placeholder="https://exemplo.com/um/caminho/muito/longo"
+              required
+              class="w-full pl-12 pr-4 py-3 bg-gray-50 dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-lg focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 dark:focus:border-blue-400 outline-none transition duration-300"
+            />
+          </div>
+          <button
+            type="submit"
+            id="shortenBtn"
+            class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300"
+          >
+            Encurtar
+          </button>
+        </form>
+
+        <!-- Área de Resultado -->
+        <div
+          id="resultArea"
+          class="hidden mt-6 p-4 bg-blue-50 dark:bg-gray-700/50 rounded-lg"
+        >
+          <div
+            class="flex flex-col sm:flex-row items-center justify-between gap-4"
+          >
+            <p
+              class="text-lg font-medium text-blue-800 dark:text-blue-300 break-all"
+              id="shortenedUrl"
+            ></p>
+            <button
+              id="copyBtn"
+              class="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 w-full sm:w-auto"
+            >
+              <svg
+                class="h-5 w-5"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                />
+              </svg>
+              <span>Copiar</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Histórico de URLs -->
+        <div id="historySection" class="mt-10">
+          <h2
+            class="text-xl font-semibold mb-4 text-gray-700 dark:text-gray-300"
+          >
+            Seu Histórico
+          </h2>
+          <div id="historyList" class="space-y-3">
+            <!-- Itens do histórico serão inseridos aqui -->
+            <p id="noHistory" class="text-gray-500 dark:text-gray-400">
+              Nenhuma URL encurtada ainda.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rodapé -->
+      <footer class="text-center mt-8 text-gray-500 dark:text-gray-400 text-sm">
+        <p>Desenvolvido com ❤️</p>
+      </footer>
+    </div>
+
+    <!-- Modal de Notificação -->
+    <div
+      id="notificationModal"
+      class="hidden fixed top-5 right-5 bg-green-500 text-white py-3 px-6 rounded-lg shadow-xl"
+      style="transition: all 300ms ease-out"
+    >
+      <p id="notificationMessage"></p>
+    </div>
+  </body>
+  <script src="./main.js" type="module"></script>
+</html>
