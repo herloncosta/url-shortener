@@ -27,7 +27,7 @@ export const createShortUrl = async (
       shortCode,
       expiresAt,
     })
-    const shortUrl = `http://localhost:${PORT}/${newUrl.dataValues.shortCode}`
+    const shortUrl = `${process.env.BASE_URL_PRODUCTION}/${newUrl.dataValues.shortCode}`
     res.status(200).json({ shortUrl })
   } catch (e) {
     console.log(e)
