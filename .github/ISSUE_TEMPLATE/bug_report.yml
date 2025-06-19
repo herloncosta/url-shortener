@@ -1,0 +1,73 @@
+name: "🐛 Relato de Bug (Bug Report)"
+description: "Crie um relato para nos ajudar a melhorar o projeto."
+title: "[BUG]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por nos ajudar a encontrar e corrigir problemas! Um bom bug report é detalhado e fornece passos claros para reproduzir o erro.
+
+  - type: checkboxes
+    id: initial-check
+    attributes:
+      label: ✅ Verificação Inicial
+      options:
+        - label: Eu procurei por issues existentes e não encontrei nenhum relato similar.
+          required: true
+
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: "Descreva o bug"
+      description: "Uma descrição clara e concisa do que é o bug."
+      placeholder: "Quando eu clico no botão Salvar, a página quebra com um erro 500."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: "Passos para Reproduzir"
+      description: "Passos exatos para que possamos reproduzir o comportamento. Esta é a parte mais importante!"
+      placeholder: |
+        1. Acesse a página '/configuracoes'
+        2. Mude o campo 'Nome de Usuário' para 'Teste'
+        3. Clique em 'Salvar'
+        4. Veja o erro
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: "Comportamento Esperado"
+      description: "O que você esperava que acontecesse?"
+      placeholder: "Eu esperava que a página salvasse a informação e mostrasse uma mensagem de sucesso."
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: "Comportamento Atual"
+      description: "O que realmente aconteceu? Se houver uma mensagem de erro, cole-a aqui."
+      placeholder: "A página exibiu uma tela branca e o console mostrou um erro de 'TypeError'."
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: "Ambiente (Opcional, mas recomendado)"
+      description: "Por favor, nos informe o ambiente em que o bug ocorreu."
+      placeholder: |
+        - OS: [ex. Windows 11, macOS Sonoma 14.5]
+        - Navegador: [ex. Chrome 125, Firefox 126]
+        - Versão da Aplicação: [ex. v1.2.3]
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: "Contexto Adicional, Logs ou Screenshots"
+      description: "Cole aqui quaisquer logs de erro relevantes do console do navegador. Adicione screenshots para nos ajudar a identificar o problema."

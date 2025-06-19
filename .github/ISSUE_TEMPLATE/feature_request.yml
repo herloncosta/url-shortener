@@ -1,0 +1,47 @@
+name: "🚀 Requisição de Funcionalidade"
+description: "Sugira uma nova ideia ou funcionalidade para o projeto."
+title: "[FEAT]: "
+labels: ["enhancement", "feature-request", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por dedicar seu tempo para sugerir uma nova funcionalidade! Para nos ajudar a entender e avaliar sua sugestão, por favor, preencha as seções abaixo.
+
+  - type: checkboxes
+    id: initial-check
+    attributes:
+      label: ✅ Verificação Inicial
+      options:
+        - label: Eu procurei por issues existentes e não encontrei nenhuma requisição similar.
+          required: true
+
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: "O problema está relacionado a uma situação específica?"
+      description: "Descreva o problema que esta funcionalidade resolveria. Qual é a sua frustração? Isso ajuda os mantenedores a entender o contexto e a urgência."
+      placeholder: "Ex: Eu sempre fico frustrado quando..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution-description
+    attributes:
+      label: "Descreva a solução que você gostaria"
+      description: "Descreva como você imagina a nova funcionalidade. Como ela deveria funcionar? Onde ela se encaixaria na interface/fluxo atual?"
+      placeholder: "Eu gostaria de ter um botão que..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: "Descreva as alternativas que você considerou"
+      description: "Houve outras maneiras que você pensou para resolver este problema? Por que a solução proposta é a melhor?"
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: "Contexto Adicional"
+      description: "Adicione qualquer outro contexto, mockups, screenshots, ou links que possam ajudar a entender a requisição."
