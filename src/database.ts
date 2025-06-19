@@ -1,11 +1,11 @@
-import { Sequelize, DataTypes } from "sequelize";
-import { Url } from "./models/url";
+import { Sequelize, DataTypes } from 'sequelize'
+import { Url } from './models/url'
 
 const sequelize = new Sequelize({
-  dialect: "sqlite",
-  storage: "./urls.sqlite",
+  dialect: 'sqlite',
+  storage: './urls.sqlite',
   logging: false,
-});
+})
 
 Url.init(
   {
@@ -30,18 +30,18 @@ Url.init(
   },
   {
     sequelize,
-    modelName: "Url",
+    modelName: 'Url',
     timestamps: true,
   }
-);
+)
 
 export const setupDatabase = async () => {
   try {
-    await sequelize.authenticate();
-    console.log("Connection has been established successfully.");
-    Url.sync({ alter: true });
-    console.log("Url table sycned successfully.");
+    await sequelize.authenticate()
+    console.log('Connection has been established successfully.')
+    Url.sync({ alter: true })
+    console.log('Url table sycned successfully.')
   } catch (e) {
-    console.error("Unable to connect to the database:", e);
+    console.error('Unable to connect to the database:', e)
   }
-};
+}

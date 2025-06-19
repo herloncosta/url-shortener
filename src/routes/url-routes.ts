@@ -1,10 +1,10 @@
-import express from "express";
+import express from 'express'
 import {
   createShortUrl,
   redirectToLongUrl,
-} from "../controllers/url-controller";
+} from '../controllers/url-controller'
 
-export const urlRouter = express.Router();
+export const urlRouter = express.Router()
 
-urlRouter.post("/shorten-url", createShortUrl);
-urlRouter.get("/:code", redirectToLongUrl);
+urlRouter.post('/shorten-url', createShortUrl)
+urlRouter.get('/:code', redirectToLongUrl)

@@ -1,10 +1,10 @@
 export interface ShortenerUrlBody {
-  url: string;
+  url: string
 }
 
 export interface UrlAttributes {
-  id?: number;
-  longUrl: string;
-  shortCode: string;
-  expiresAt: Date;
+  id?: number
+  longUrl: string
+  shortCode: string
+  expiresAt: Date
 }
